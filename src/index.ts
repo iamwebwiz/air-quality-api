@@ -2,9 +2,10 @@ import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import morgan from "morgan";
 import apiRoutes from "./routes";
+import config from "./common/config";
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = config.Port;
 
 app.use(express.json());
 app.use(cors());
