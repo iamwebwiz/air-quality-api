@@ -1,3 +1,3 @@
-interface AirQualityServiceInterface {
+export interface AirQualityServiceInterface {
   Get(): void;
 }

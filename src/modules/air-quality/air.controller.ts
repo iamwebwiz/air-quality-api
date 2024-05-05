@@ -1,10 +1,12 @@
 import { Request, Response } from "express";
-import { validationResult } from "express-validator";
-import config from "../../common/config";
+import { matchedData, validationResult } from "express-validator";
+import { IQAirService } from "./services/iqair.service";
+import { GivenZoneResponse } from "./air.types";
 
 export default class AirQualityController {
-  static getForZone(req: Request, res: Response) {
+  static async getForZone(req: Request, res: Response) {
     const errors = validationResult(req);
+    const data = matchedData(req, { locations: ["query"] });
 
     if (!errors.isEmpty()) {
       return res
@@ -12,12 +14,11 @@ export default class AirQualityController {
         .json({ status: "validation_error", errors: errors.array() });
     }
 
-    return res.json({
-      status: "success",
-      message: "It works good!",
-      data: {
-        ApiKey: config.ApiKey,
-      },
-    });
+    const response = await new IQAirService(
+      data.longitude,
+      data.latitude
+    ).Get();
+
+    return res.json(response);
   }
 }

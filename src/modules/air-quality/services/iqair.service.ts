@@ -1,6 +1,7 @@
-import fetch from "node-fetch";
+import axios from "axios";
 import config from "../../../common/config";
 import { AirQualityResponse, GivenZoneResponse } from "../air.types";
+import { AirQualityServiceInterface } from "./air-service.interface";
 
 export class IQAirService implements AirQualityServiceInterface {
   static BaseUrl: string = "https://api.airvisual.com/v2/nearest_city";
@@ -14,21 +15,22 @@ export class IQAirService implements AirQualityServiceInterface {
     this.latitude = latitude;
   }
 
-  private buildUrl(): string {
-    return `${IQAirService.BaseUrl}?lat=${this.latitude}&lon=${this.longitude}&key=${IQAirService.ApiKey}`;
-  }
-
   async Get(): Promise<GivenZoneResponse> {
-    const res = await fetch(this.buildUrl());
-    const data = await res.json();
+    const res = await axios.get(IQAirService.BaseUrl, {
+      params: {
+        lat: this.latitude,
+        lon: this.longitude,
+        key: IQAirService.ApiKey,
+      },
+    });
 
-    return this.getFormattedResponse(data);
+    return this.getFormattedResponse(res.data.data);
   }
 
   private getFormattedResponse(data: AirQualityResponse): GivenZoneResponse {
     return {
       Result: {
-        Pollution: data?.data.current.pollution,
+        Pollution: data.current.pollution,
       },
     };
   }
