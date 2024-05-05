@@ -1,14 +1,14 @@
-import { param } from "express-validator";
+import { query } from "express-validator";
 
 export const rules = [
-  param("longitude")
+  query("longitude")
     .notEmpty()
     .withMessage("The longitude parameter must be provided")
     .isNumeric()
-    .withMessage("The longitude value must be numeric"),
-  param("latitude")
+    .withMessage("The longitude parameter must be numeric"),
+  query("latitude")
     .notEmpty()
     .withMessage("The latitude parameter must be provided")
     .isNumeric()
-    .withMessage("The latitude value must be numeric"),
+    .withMessage("The latitude parameter must be numeric"),
 ];

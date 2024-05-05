@@ -4,6 +4,6 @@ import AirQualityController from "./air.controller";
 
 const router = Router();
 
-router.get("/:longitude/:latitude", rules, AirQualityController.getForZone);
+router.get("/", rules, AirQualityController.getForZone);
 
 export default router;
