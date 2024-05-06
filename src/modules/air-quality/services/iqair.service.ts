@@ -3,7 +3,7 @@ import config from "../../../common/config";
 import { AirQualityResponse, GivenZoneResponse } from "../air.types";
 import { AirQualityServiceInterface } from "./air-service.interface";
 
-export class IQAirService implements AirQualityServiceInterface {
+export default class IQAirService implements AirQualityServiceInterface {
   static BaseUrl: string = "https://api.airvisual.com/v2/nearest_city";
   static ApiKey: string = config.ApiKey;
 

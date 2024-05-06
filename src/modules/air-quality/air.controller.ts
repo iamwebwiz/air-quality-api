@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { matchedData, validationResult } from "express-validator";
-import { IQAirService } from "./services/iqair.service";
+import IQAirService from "./services/iqair.service";
 
 export default class AirQualityController {
   static async getForZone(req: Request, res: Response) {
