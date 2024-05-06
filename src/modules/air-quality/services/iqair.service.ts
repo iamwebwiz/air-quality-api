@@ -1,18 +1,22 @@
 import axios from "axios";
 import config from "../../../common/config";
-import { AirQualityResponse, GivenZoneResponse } from "../air.types";
+import {
+  AirQualityResponse,
+  CoordinateType,
+  GivenZoneResponse,
+} from "../air.types";
 import { AirQualityServiceInterface } from "./air-service.interface";
 
 export default class IQAirService implements AirQualityServiceInterface {
   static BaseUrl: string = "https://api.airvisual.com/v2/nearest_city";
   static ApiKey: string = config.ApiKey;
 
-  private longitude: string;
-  private latitude: string;
+  private longitude: number;
+  private latitude: number;
 
-  constructor(longitude: string, latitude: string) {
-    this.longitude = longitude;
-    this.latitude = latitude;
+  constructor(longitude: CoordinateType, latitude: CoordinateType) {
+    this.longitude = +longitude;
+    this.latitude = +latitude;
   }
 
   async Get(): Promise<GivenZoneResponse> {

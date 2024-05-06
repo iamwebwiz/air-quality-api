@@ -1,3 +1,5 @@
+export type CoordinateType = string | number;
+
 export interface GivenZoneResponse {
   Result: {
     Pollution: {
