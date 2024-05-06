@@ -6,6 +6,6 @@ const router = Router();
 
 router.get("/", rules, AirQualityController.getForZone);
 
-router.get("/most-polluted", () => {});
+router.get("/most-polluted", AirQualityController.getMostPollutedTimestamp);
 
 export default router;

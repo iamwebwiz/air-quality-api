@@ -17,7 +17,7 @@ app.use(morgan("dev"));
 
 connectToDatabase();
 
-nodeCron.schedule("* * * * *", checkParisAirQuality); // schedule job for every minute
+// nodeCron.schedule("* * * * *", checkParisAirQuality); // schedule job for every minute
 
 app.use("/api", apiRoutes);
 
