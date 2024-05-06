@@ -7,7 +7,7 @@ export const checkParisAirQuality = async () => {
   const latitude = 48.856613;
   const longitude = 2.352222;
 
-  const response = await new IQAirService(longitude, latitude).Get();
+  const response = await new IQAirService(longitude, latitude).getAirQuality();
 
   const airQuality = new AirQuality({
     city: response.city,

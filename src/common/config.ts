@@ -3,9 +3,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const config = {
-  ApiKey: process.env.IQAIR_API_KEY || "",
-  Port: process.env.PORT || 3000,
-  DatabaseUri: process.env.MONGODB_URI || "",
+  apiKey: process.env.IQAIR_API_KEY || "",
+  port: process.env.PORT || 3000,
+  databaseUri: process.env.MONGODB_URI || "",
 };
 
 export default config;

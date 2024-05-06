@@ -8,7 +8,7 @@ import { checkParisAirQuality } from "./modules/air-quality/schedule/paris-aq-ch
 import { connectToDatabase } from "./common/database";
 
 const app = express();
-const port = config.Port;
+const port = config.port;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

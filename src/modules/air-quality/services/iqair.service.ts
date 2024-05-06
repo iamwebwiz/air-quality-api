@@ -8,8 +8,8 @@ import {
 import { AirQualityServiceInterface } from "./air-service.interface";
 
 export default class IQAirService implements AirQualityServiceInterface {
-  static BaseUrl: string = "https://api.airvisual.com/v2/nearest_city";
-  static ApiKey: string = config.ApiKey;
+  static baseUrl: string = "https://api.airvisual.com/v2/nearest_city";
+  static apiKey: string = config.apiKey;
 
   private longitude: number;
   private latitude: number;
@@ -19,12 +19,12 @@ export default class IQAirService implements AirQualityServiceInterface {
     this.latitude = +latitude;
   }
 
-  async Get(): Promise<AirQualityResponse> {
-    const res = await axios.get(IQAirService.BaseUrl, {
+  async getAirQuality(): Promise<AirQualityResponse> {
+    const res = await axios.get(IQAirService.baseUrl, {
       params: {
         lat: this.latitude,
         lon: this.longitude,
-        key: IQAirService.ApiKey,
+        key: IQAirService.apiKey,
       },
     });
 

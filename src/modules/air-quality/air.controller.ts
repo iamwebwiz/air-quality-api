@@ -18,7 +18,7 @@ export default class AirQualityController {
     const response: AirQualityResponse = await new IQAirService(
       data.longitude,
       data.latitude
-    ).Get();
+    ).getAirQuality();
 
     return res.json(IQAirService.getFormattedResponse(response));
   }

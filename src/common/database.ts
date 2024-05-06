@@ -2,7 +2,7 @@ import { connect } from "mongoose";
 import config from "./config";
 
 export const connectToDatabase = async () => {
-  await connect(config.DatabaseUri)
+  await connect(config.databaseUri)
     .then((conn) => {
       console.log(
         `Connection to database succeeded at ${conn.connection.host}:${conn.connection.port}`
