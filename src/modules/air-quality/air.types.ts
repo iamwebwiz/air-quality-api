@@ -4,6 +4,9 @@ export interface IAirQualityRecord {
   city: string;
   state: string;
   country: string;
+  longitude: number;
+  latitude: number;
+  location: AirQualityResponse["location"];
   pollution: GivenZoneResponse["Result"]["Pollution"];
 }
 
