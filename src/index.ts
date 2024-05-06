@@ -3,13 +3,21 @@ import cors from "cors";
 import morgan from "morgan";
 import apiRoutes from "./routes";
 import config from "./common/config";
+import nodeCron from "node-cron";
+import { checkParisAirQuality } from "./modules/air-quality/schedule/paris-aq-check.cron";
+import { connectToDatabase } from "./common/database";
 
 const app = express();
 const port = config.Port;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(morgan("dev"));
+
+connectToDatabase();
+
+// nodeCron.schedule("* * * * *", checkParisAirQuality); // schedule job for every minute
 
 app.use("/api", apiRoutes);
 

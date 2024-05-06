@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { matchedData, validationResult } from "express-validator";
 import IQAirService from "./services/iqair.service";
+import { AirQualityResponse } from "./air.types";
 
 export default class AirQualityController {
   static async getForZone(req: Request, res: Response) {
@@ -13,11 +14,11 @@ export default class AirQualityController {
         .json({ status: "validation_error", errors: errors.array() });
     }
 
-    const response = await new IQAirService(
+    const response: AirQualityResponse = await new IQAirService(
       data.longitude,
       data.latitude
     ).Get();
 
-    return res.json(response);
+    return res.json(IQAirService.getFormattedResponse(response));
   }
 }

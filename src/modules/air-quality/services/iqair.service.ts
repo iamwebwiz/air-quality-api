@@ -19,7 +19,7 @@ export default class IQAirService implements AirQualityServiceInterface {
     this.latitude = +latitude;
   }
 
-  async Get(): Promise<GivenZoneResponse> {
+  async Get(): Promise<AirQualityResponse> {
     const res = await axios.get(IQAirService.BaseUrl, {
       params: {
         lat: this.latitude,
@@ -28,10 +28,10 @@ export default class IQAirService implements AirQualityServiceInterface {
       },
     });
 
-    return this.getFormattedResponse(res.data.data);
+    return res.data.data;
   }
 
-  private getFormattedResponse(data: AirQualityResponse): GivenZoneResponse {
+  static getFormattedResponse(data: AirQualityResponse): GivenZoneResponse {
     return {
       Result: {
         Pollution: data.current.pollution,

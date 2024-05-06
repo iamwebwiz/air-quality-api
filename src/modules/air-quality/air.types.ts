@@ -1,5 +1,12 @@
 export type CoordinateType = string | number;
 
+export interface IAirQualityRecord {
+  city: string;
+  state: string;
+  country: string;
+  pollution: GivenZoneResponse["Result"]["Pollution"];
+}
+
 export interface GivenZoneResponse {
   Result: {
     Pollution: {
