@@ -33,6 +33,8 @@ Copy the contents of `.env.example` to `.env`
 cp .env.example .env
 ```
 
+Update the values of `IQAIR_API_KEY` and `MONGODB_URI` in the `.env` file
+
 Start mongodb on your machine, then
 
 Start the development server
