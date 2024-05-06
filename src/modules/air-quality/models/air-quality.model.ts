@@ -8,8 +8,8 @@ const schema = new Schema<IAirQualityRecord>(
     country: { type: String, required: true },
     longitude: { type: Number, required: true },
     latitude: { type: Number, required: true },
-    location: { type: Object, required: true },
-    pollution: { type: Object, required: true },
+    location: { type: Schema.Types.Mixed, required: true },
+    pollution: { type: Schema.Types.Mixed, required: true },
   },
   { timestamps: true }
 );

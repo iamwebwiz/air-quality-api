@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { default as AirRoutes } from "../modules/air-quality/air.route";
+import { default as AirRoutes } from "../modules/air-quality/air.routes";
 
 const app = express();
 
