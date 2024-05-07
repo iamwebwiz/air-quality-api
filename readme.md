@@ -84,3 +84,23 @@ Sample response:
   }
 }
 ```
+
+### Testing
+
+To run the available tests, run the following command:
+
+```sh
+yarn test
+```
+
+or
+
+```sh
+npm run test
+```
+
+or
+
+```sh
+pnpm test
+```
